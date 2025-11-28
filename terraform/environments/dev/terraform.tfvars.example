@@ -1,0 +1,48 @@
+# AWS Region
+region = "us-east-1"
+
+# General
+name = "bookstore-dev"
+tags = {
+  Environment = "dev"
+  Project     = "BookStore"
+  ManagedBy   = "Terraform"
+}
+
+# Backend Service
+backend_image          = "" # e.g., 123456789012.dkr.ecr.us-east-1.amazonaws.com/bookstore-backend:latest
+backend_port           = 8080
+backend_desired_count  = 1
+backend_cpu            = "256"
+backend_memory         = "512"
+
+# Frontend Service
+frontend_image         = "" # e.g., 123456789012.dkr.ecr.us-east-1.amazonaws.com/bookstore-frontend:latest
+frontend_port          = 3000
+frontend_desired_count = 1
+frontend_cpu           = "256"
+frontend_memory        = "512"
+
+# Database (PostgreSQL)
+db_username       = "postgres"
+db_password       = "ChangeMe123!"  # IMPORTANT: Change this!
+db_storage        = 20
+db_instance_class = "db.t3.micro"
+
+# ElastiCache (Redis)
+redis_node_type = "cache.t3.micro"
+redis_nodes     = 1
+
+# MSK (Kafka)
+kafka_brokers       = 1
+kafka_instance_type = "kafka.t3.small"
+kafka_version       = "2.8.1"
+
+# Remote State Backend (S3)
+# When running terraform init, use:
+# terraform init \
+#   -backend-config="bucket=MY_STATE_BUCKET" \
+#   -backend-config="key=dev/terraform.tfstate" \
+#   -backend-config="region=us-east-1" \
+#   -backend-config="dynamodb_table=MY_LOCK_TABLE"
+

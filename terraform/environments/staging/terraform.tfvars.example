@@ -1,0 +1,32 @@
+region = "us-east-1"
+name   = "bookstore-staging"
+
+tags = {
+  Environment = "staging"
+  Project     = "BookStore"
+  ManagedBy   = "Terraform"
+}
+
+backend_image          = ""
+backend_port           = 8080
+backend_desired_count  = 2
+backend_cpu            = "512"
+backend_memory         = "1024"
+
+frontend_image         = ""
+frontend_port          = 3000
+frontend_desired_count = 2
+frontend_cpu           = "512"
+frontend_memory        = "1024"
+
+db_username       = "postgres"
+db_password       = "ChangeMe123!"
+db_storage        = 50
+db_instance_class = "db.t3.small"
+
+redis_node_type = "cache.t3.small"
+redis_nodes     = 2
+
+kafka_brokers       = 2
+kafka_instance_type = "kafka.m5.large"
+kafka_version       = "2.8.1"
